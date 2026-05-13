@@ -1123,7 +1123,6 @@ export default function App() {
   const [openNew, setOpenNew] = useState(null);
 
   const handleUnlock = () => { sessionStorage.setItem("ag_auth", "1"); setUnlocked(true); };
-  if (!unlocked) return <LockScreen onUnlock={handleUnlock} />;
 
   useEffect(() => {
     try {
@@ -1139,6 +1138,8 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("bijou_data", JSON.stringify({ clients, reps, fabs, factures, estimations, achats }));
   }, [clients, reps, fabs, factures, estimations, achats]);
+
+  if (!unlocked) return <LockScreen onUnlock={handleUnlock} />;
 
   return (
     <>
